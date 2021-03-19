@@ -31,7 +31,7 @@
 # clang 7.0.2 for ndk-r18b, 5.0.3 for ndk-r16b
 NDK_TOOLCHAIN_VERSION := clang
 
-APP_PLATFORM := android-20
+APP_PLATFORM := android-24
 APP_ABI := armeabi-v7a arm64-v8a
 #APP_OPTIM := debug
 APP_OPTIM := release
