@@ -303,6 +303,7 @@ public final class USBMonitor {
 				result.addAll(deviceList.values());
 			} else {
 				for (final UsbDevice device: deviceList.values() ) {
+					Log.i(TAG, "[hugoliu] getDeviceList1 enum device: " + Integer.toHexString(device.getVendorId()) + ":" + Integer.toHexString(device.getDeviceId()));
 					for (final DeviceFilter filter: filters) {
 						if ((filter != null) && filter.matches(device)) {
 							// when filter matches
@@ -327,10 +328,13 @@ public final class USBMonitor {
 	public List<UsbDevice> getDeviceList(final DeviceFilter filter) throws IllegalStateException {
 		if (destroyed) throw new IllegalStateException("already destroyed");
 		final HashMap<String, UsbDevice> deviceList = mUsbManager.getDeviceList();
+		Log.i(TAG, "[hugoliu] deviceList size: " + deviceList.size());
 		final List<UsbDevice> result = new ArrayList<UsbDevice>();
 		if (deviceList != null) {
 			for (final UsbDevice device: deviceList.values() ) {
+				Log.i(TAG, "[hugoliu] getDeviceList0 enum device: " + Integer.toHexString(device.getVendorId()) + ":" + Integer.toHexString(device.getProductId()));
 				if ((filter == null) || (filter.matches(device) && !filter.isExclude)) {
+//					Log.i(TAG, "[hugoliu] getDeviceList add device: " + Integer.toHexString(device.getVendorId()) + ":" + Integer.toHexString(device.getDeviceId()));
 					result.add(device);
 				}
 			}
@@ -415,7 +419,7 @@ public final class USBMonitor {
 	 * @return true if fail to request permission
 	 */
 	public synchronized boolean requestPermission(final UsbDevice device) {
-//		if (DEBUG) Log.v(TAG, "requestPermission:device=" + device);
+		Log.i(TAG, "[hugoliu] requestPermission:device=" + device);
 		boolean result = false;
 		if (isRegistered()) {
 			if (device != null) {
