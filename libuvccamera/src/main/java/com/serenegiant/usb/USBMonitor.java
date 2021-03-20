@@ -333,10 +333,10 @@ public final class USBMonitor {
 		if (deviceList != null) {
 			for (final UsbDevice device: deviceList.values() ) {
 				Log.i(TAG, "[hugoliu] getDeviceList0 enum device: " + Integer.toHexString(device.getVendorId()) + ":" + Integer.toHexString(device.getProductId()));
-				if ((filter == null) || (filter.matches(device) && !filter.isExclude)) {
+//				if ((filter == null) || (filter.matches(device) && !filter.isExclude)) {
 //					Log.i(TAG, "[hugoliu] getDeviceList add device: " + Integer.toHexString(device.getVendorId()) + ":" + Integer.toHexString(device.getDeviceId()));
 					result.add(device);
-				}
+//				}
 			}
 		}
 		return result;
